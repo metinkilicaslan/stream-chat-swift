@@ -48,16 +48,30 @@ public final class ComposerView: UIView {
     /// Uploader for images and files.
     public var uploadManager: UploadManager?
     
+    var isLanguageRightToLeft: Bool {
+         if UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft {
+             return true
+         }
+         return false
+     }
+    
+    var paragraphStyle: NSMutableParagraphStyle {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = isLanguageRightToLeft ? .right : .left
+        return paragraphStyle
+    }
+    
     /// A placeholder label.
     /// You have to use the `placeholderText` property to change the value of the placeholder label.
     public private(set) lazy var placeholderLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        textView.addSubview(label)
+        addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.left.equalTo(textView.textContainer.lineFragmentPadding)
-            make.top.equalTo(textView.textContainerInset.top)
-            make.right.equalToSuperview()
+            make.top.equalTo(textView.snp.top).offset(textView.textContainerInset.top)
+            make.leading.equalTo(textView.snp.leading).offset(textView.textContainer.lineFragmentPadding)
+            make.bottom.equalTo(textView.snp.bottom).offset(-textView.textContainerInset.bottom)
+            make.trailing.equalTo(textView.snp.trailing).offset(-textView.textContainer.lineFragmentPadding)
         }
         
         return label
@@ -66,7 +80,8 @@ public final class ComposerView: UIView {
     /// A send button.
     public private(set) lazy var sendButton: UIButton = {
         let button = UIButton(frame: .zero)
-        button.setImage(UIImage.Icons.send, for: .normal)
+        let image = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? UIImage.Icons.send.flip(orientation: .upMirrored)?.template : UIImage.Icons.send
+        button.setImage(image, for: .normal)
         button.backgroundColor = backgroundColor
         button.titleLabel?.font = .chatMediumBold
         
@@ -118,7 +133,7 @@ public final class ComposerView: UIView {
         
         return NSAttributedString(string: text, attributes: [.foregroundColor: textColor ?? style.textColor,
                                                              .font: style.font,
-                                                             .paragraphStyle: NSParagraphStyle.default])
+                                                             .paragraphStyle: paragraphStyle])
     }
     
     /// A composer view style state and it will toggle `isUserInteractionEnabled` states for all child views.
@@ -157,8 +172,8 @@ public extension ComposerView {
         view.addSubview(self)
         
         snp.makeConstraints { make in
-            make.left.equalTo(view.safeAreaLayoutGuide.snp.leftMargin).offset(style.edgeInsets.left)
-            make.right.equalTo(view.safeAreaLayoutGuide.snp.rightMargin).offset(-style.edgeInsets.right)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin).offset(style.edgeInsets.left)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin).offset(-style.edgeInsets.right)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottomMargin).offset(-style.edgeInsets.bottom)
             heightConstraint = make.height.equalTo(style.height).constraint
         }
@@ -175,7 +190,7 @@ public extension ComposerView {
         
         attachmentButton.snp.makeConstraints { make in
             make.height.equalTo(style.height)
-            make.left.equalToSuperview()
+            make.leading.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
@@ -192,7 +207,7 @@ public extension ComposerView {
             sendButton.snp.makeConstraints { make in
                 make.height.equalTo(style.height)
                 make.bottom.equalToSuperview()
-                sendButtonRightConstraint = make.right.equalToSuperview().constraint
+                sendButtonRightConstraint = make.trailing.equalToSuperview().constraint
             }
         }
         
@@ -200,7 +215,7 @@ public extension ComposerView {
         addSubview(imagesCollectionView)
         
         imagesCollectionView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
         }
         
@@ -208,7 +223,7 @@ public extension ComposerView {
         addSubview(filesStackView)
         
         filesStackView.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
             make.top.equalToSuperview()
         }
         
@@ -223,13 +238,13 @@ public extension ComposerView {
             make.bottom.equalToSuperview().offset(-textViewPadding)
             
             if sendButton.superview == nil {
-                make.right.equalToSuperview().offset(-textViewPadding)
+                make.trailing.equalToSuperview().offset(-textViewPadding)
             } else {
-                make.right.equalTo(sendButton.snp.left)
+                make.trailing.equalTo(sendButton.snp.leading)
             }
             
             if attachmentButton.isHidden {
-                make.left.equalToSuperview().offset(textViewPadding)
+                make.leading.equalToSuperview().offset(textViewPadding)
             } else {
                 var offset = textView.textContainer.lineFragmentPadding
                 
@@ -237,7 +252,7 @@ public extension ComposerView {
                     offset += borderWidth
                 }
                 
-                make.left.equalTo(attachmentButton.snp.right).offset(-offset)
+                make.leading.equalTo(attachmentButton.snp.trailing).offset(-offset)
             }
         }
         
@@ -262,7 +277,7 @@ public extension ComposerView {
             
             alsoSendToChannelButton.snp.makeConstraints { make in
                 make.top.equalTo(snp.bottom).offset(replyInChannelViewStyle.edgeInsets.top)
-                make.left.equalTo(snp.left).offset(replyInChannelViewStyle.edgeInsets.left)
+                make.leading.equalTo(snp.leading).offset(replyInChannelViewStyle.edgeInsets.left)
                 make.height.equalTo(replyInChannelViewStyle.height)
             }
             

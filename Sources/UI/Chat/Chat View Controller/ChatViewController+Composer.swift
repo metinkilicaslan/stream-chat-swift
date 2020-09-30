@@ -63,7 +63,7 @@ extension Reactive where Base: ChatViewController {
             
             func animations() {
                 chatViewController.view.removeAllAnimations()
-                chatViewController.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
+                chatViewController.additionalSafeAreaInsets = UIEdgeInsets(top: 0, leading: 0, bottom: bottom, trailing: 0)
                 
                 if keyboardNotification.animation != nil {
                     if keyboardNotification.isVisible {

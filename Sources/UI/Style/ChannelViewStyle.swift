@@ -99,9 +99,9 @@ public struct ChannelViewStyle: Hashable {
                 height: CGFloat = UITableView.automaticDimension,
                 spacing: Spacing = .init(horizontal: .messageInnerPadding, vertical: 0),
                 edgeInsets: UIEdgeInsets = .init(top: .messageInnerPadding,
-                                                 left: .messageEdgePadding,
+                                                 leading: .messageEdgePadding,
                                                  bottom: .messageInnerPadding,
-                                                 right: .messageEdgePadding)) {
+                                                 trailing: .messageEdgePadding)) {
         self.backgroundColor = backgroundColor
         self.separatorStyle = separatorStyle
         self.avatarViewStyle = avatarViewStyle

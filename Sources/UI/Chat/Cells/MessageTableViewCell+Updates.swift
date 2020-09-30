@@ -39,7 +39,17 @@ extension MessageTableViewCell {
             return nil
         }
         
-        return style.alignment == .left
+        var alignment = style.alignment
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if alignment == .left {
+                alignment = .right
+            } else {
+                alignment = .left
+            }
+        }
+        
+        return alignment == .left
             ? (isContinueMessage
                 ? style.backgroundImages[.rightSide]?.image(for: traitCollection)
                 : style.backgroundImages[.pointedLeftBottom]?.image(for: traitCollection))
@@ -107,9 +117,9 @@ extension MessageTableViewCell {
             let tailOffset: CGFloat = .reactionsToMessageOffset + style.tailCornerRadius - style.tailImage.size.width - 2
             
             if style.alignment == .left {
-                self.reactionsTailImageLeftConstraint = make.left.equalTo(anchorView.snp.right).offset(tailOffset).constraint
+                self.reactionsTailImageLeftConstraint = make.leading.equalTo(anchorView.snp.trailing).offset(tailOffset).constraint
             } else {
-                self.reactionsTailImageRightConstraint = make.right.equalTo(anchorView.snp.left).offset(-tailOffset).constraint
+                self.reactionsTailImageRightConstraint = make.trailing.equalTo(anchorView.snp.leading).offset(-tailOffset).constraint
             }
         }
         

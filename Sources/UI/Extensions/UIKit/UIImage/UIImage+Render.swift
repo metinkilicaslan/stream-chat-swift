@@ -19,8 +19,12 @@ extension UIImage {
         
         if let context = UIGraphicsGetCurrentContext() {
             context.interpolationQuality = .high
-            context.translateBy(x: (alignment == .right ? 0 : size.width), y: size.height)
-            context.scaleBy(x: (alignment == .right ? 1 : -1), y: -1)
+            
+            var shouldFlip = alignment == .right
+            shouldFlip = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight ? shouldFlip : !shouldFlip
+            
+            context.translateBy(x: (shouldFlip ? 0 : size.width), y: size.height)
+            context.scaleBy(x: (shouldFlip ? 1 : -1), y: -1)
         }
         
         UIColor.clear.setFill()

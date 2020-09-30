@@ -100,7 +100,17 @@ extension MessageTableViewCell {
             return nil
         }
         
-        if style.alignment == .left {
+        var alignment = style.alignment
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if alignment == .left {
+                alignment = .right
+            } else {
+                alignment = .left
+            }
+        }
+        
+        if alignment == .left {
             return offset == 0 ? messageContainerView.image : style.backgroundImages[.rightSide]?.image(for: traitCollection)
         }
         
@@ -112,7 +122,17 @@ extension MessageTableViewCell {
             return nil
         }
         
-        if style.alignment == .left {
+        var alignment = style.alignment
+        
+        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if alignment == .left {
+                alignment = .right
+            } else {
+                alignment = .left
+            }
+        }
+        
+        if alignment == .left {
             if offset == 0,
                 messageContainerViewImage == style.backgroundImages[.pointedLeftBottom]?.image(for: traitCollection) {
                 return style.transparentBackgroundImages[.pointedLeftBottom]?.image(for: traitCollection)

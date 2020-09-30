@@ -101,7 +101,7 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
         view.insertSubview(tableView, at: 0)
         
         if style.composer.pinStyle == .solid {
-            tableView.contentInset = UIEdgeInsets(top: style.incomingMessage.edgeInsets.top, left: 0, bottom: 0, right: 0)
+            tableView.contentInset = UIEdgeInsets(top: style.incomingMessage.edgeInsets.top, leading: 0, bottom: 0, trailing: 0)
             
             tableView.snp.makeConstraints { make in
                 make.left.top.right.equalToSuperview()
@@ -109,9 +109,9 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
             }
         } else {
             tableView.contentInset = UIEdgeInsets(top: style.incomingMessage.edgeInsets.top,
-                                                  left: 0,
+                                                  leading: 0,
                                                   bottom: tableViewBottomInset,
-                                                  right: 0)
+                                                  trailing: 0)
             
             tableView.makeEdgesEqualToSuperview()
         }

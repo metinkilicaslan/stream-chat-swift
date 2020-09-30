@@ -24,9 +24,9 @@ extension ComposerView: UICollectionViewDataSource, UICollectionViewDelegate {
         collectionViewLayout.minimumInteritemSpacing = 0
         
         collectionViewLayout.sectionInset = UIEdgeInsets(top: 0,
-                                                         left: .composerCornerRadius,
+                                                         leading: .composerCornerRadius,
                                                          bottom: 0,
-                                                         right: .composerCornerRadius)
+                                                         trailing: .composerCornerRadius)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.isHidden = true
