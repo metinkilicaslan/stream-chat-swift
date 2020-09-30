@@ -58,7 +58,7 @@ final class ComposerFileView: UIView {
         progressView.progress = 0.3
         
         iconView.snp.makeConstraints { make in
-            make.left.top.equalToSuperview().offset(CGFloat.composerFilePadding)
+            make.leading.top.equalToSuperview().offset(CGFloat.composerFilePadding)
             make.bottom.equalToSuperview().offset(-CGFloat.composerFilePadding)
             make.width.equalTo(CGFloat.composerFileIconWidth)
             make.height.equalTo(CGFloat.composerFileIconHeight)
@@ -66,18 +66,18 @@ final class ComposerFileView: UIView {
         
         fileNameLabel.snp.makeConstraints { make in
             make.bottom.equalTo(iconView.snp.centerY).offset(1)
-            make.left.equalTo(iconView.snp.right).offset(CGFloat.composerFilePadding)
-            make.right.equalTo(removeButton.snp.left).offset(-CGFloat.composerFilePadding)
+            make.leading.equalTo(iconView.snp.trailing).offset(CGFloat.composerFilePadding)
+            make.trailing.equalTo(removeButton.snp.leading).offset(-CGFloat.composerFilePadding)
         }
         
         fileSizeLabel.snp.makeConstraints { make in
             make.top.equalTo(iconView.snp.centerY).offset(1)
-            make.left.equalTo(iconView.snp.right).offset(CGFloat.composerFilePadding)
-            make.right.equalTo(removeButton.snp.left).offset(-CGFloat.composerFilePadding)
+            make.leading.equalTo(iconView.snp.trailing).offset(CGFloat.composerFilePadding)
+            make.trailing.equalTo(removeButton.snp.leading).offset(-CGFloat.composerFilePadding)
         }
         
         removeButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-CGFloat.composerFilePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.composerFilePadding)
             make.centerY.equalTo(fileNameLabel.snp.centerY)
         }
         
@@ -85,8 +85,8 @@ final class ComposerFileView: UIView {
         
         progressView.snp.makeConstraints { make in
             make.top.equalTo(fileSizeLabel.snp.centerY)
-            make.left.equalTo(iconView.snp.right).offset(CGFloat.composerFilePadding)
-            make.right.equalTo(removeButton.snp.left).offset(-CGFloat.composerFilePadding)
+            make.leading.equalTo(iconView.snp.trailing).offset(CGFloat.composerFilePadding)
+            make.trailing.equalTo(removeButton.snp.leading).offset(-CGFloat.composerFilePadding)
         }
     }
     

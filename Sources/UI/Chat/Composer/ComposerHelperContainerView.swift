@@ -62,17 +62,17 @@ public final class ComposerHelperContainerView: UIView {
 
         closeButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(CGFloat.composerHelperButtonEdgePadding)
-            make.right.equalToSuperview().offset(-CGFloat.composerHelperButtonEdgePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.composerHelperButtonEdgePadding)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
+            make.leading.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
             make.centerY.equalTo(closeButton.snp.centerY)
         }
         
         containerView.snp.makeConstraints { make in
             make.top.equalTo(closeButton.snp.bottom).offset(CGFloat.messageInnerPadding)
-            make.left.right.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
     }
     
@@ -91,7 +91,7 @@ public final class ComposerHelperContainerView: UIView {
         parent.insertSubview(self, belowSubview: composerView)
         
         snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
             make.top.greaterThanOrEqualTo(parent.safeAreaLayoutGuide.snp.topMargin).offset(CGFloat.composerHelperShadowRadius)
         }
         

@@ -15,6 +15,18 @@ public struct MessageViewStyle: Hashable {
     public enum Alignment: String {
         /// A message view style alignment.
         case left, right
+        
+        public var uiLayoutDirectionAdjusted: Alignment {
+            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+                if self == .left {
+                    return .right
+                }
+                
+                return .left
+            }
+            
+            return self
+        }
     }
     
     /// Additional date style will work with `showTimeThreshold` paramenter.
@@ -154,9 +166,9 @@ public struct MessageViewStyle: Hashable {
                 pointedCornerRadius: CGFloat = 0,
                 spacing: Spacing = .init(horizontal: .messageInnerPadding, vertical: .messageSpacing),
                 edgeInsets: UIEdgeInsets = .init(top: .messageSpacing,
-                                                 left: .messageEdgePadding,
+                                                 leading: .messageEdgePadding,
                                                  bottom: .messageBottomPadding,
-                                                 right: .messageEdgePadding),
+                                                 trailing: .messageEdgePadding),
                 messageInsetSpacing: Spacing = .init(horizontal: .messageHorizontalInset,
                                                      vertical: .messageVerticalInset),
                 reactionViewStyle: ReactionViewStyle = ReactionViewStyle(),

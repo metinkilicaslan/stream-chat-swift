@@ -22,7 +22,7 @@ final class FileAttachmentPreview: UIImageView, AttachmentPreview {
         addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.messageInnerPadding)
+            make.leading.equalToSuperview().offset(CGFloat.messageInnerPadding)
             make.top.equalToSuperview().offset(CGFloat.attachmentFileIconTop)
             make.size.equalTo(CGSize(width: .attachmentFileIconWidth, height: .attachmentFileIconHeight))
         }
@@ -38,8 +38,8 @@ final class FileAttachmentPreview: UIImageView, AttachmentPreview {
         
         label.snp.makeConstraints { make in
             make.bottom.equalTo(iconImageView.snp.centerY)
-            make.left.equalTo(iconImageView.snp.right).offset(CGFloat.messageInnerPadding)
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(CGFloat.messageInnerPadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
         }
         
         return label
@@ -53,8 +53,8 @@ final class FileAttachmentPreview: UIImageView, AttachmentPreview {
         
         label.snp.makeConstraints { make in
             make.top.equalTo(iconImageView.snp.centerY)
-            make.left.equalTo(iconImageView.snp.right).offset(CGFloat.messageInnerPadding)
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.leading.equalTo(iconImageView.snp.trailing).offset(CGFloat.messageInnerPadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
         }
         
         return label

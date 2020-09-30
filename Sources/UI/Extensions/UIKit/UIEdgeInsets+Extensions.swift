@@ -14,7 +14,7 @@ extension UIEdgeInsets: Hashable {
     ///
     /// - Parameter value: a side value.
     public init(all value: CGFloat) {
-        self.init(top: value, left: value, bottom: value, right: value)
+        self.init(top: value, leading: value, bottom: value, trailing: value)
     }
     
     /// Create an UIEdgeInsets with equal sides values.
@@ -23,6 +23,17 @@ extension UIEdgeInsets: Hashable {
     /// - Returns: a UIEdgeInsets with equal sides.
     public static func all(_ value: CGFloat) -> UIEdgeInsets {
         return UIEdgeInsets(all: value)
+    }
+    
+    public init(top: CGFloat, leading: CGFloat, bottom: CGFloat, trailing: CGFloat) {
+        let direction = UIApplication.shared.userInterfaceLayoutDirection
+
+        switch direction {
+        case .leftToRight:
+            self.init(top: top, left: leading, bottom: bottom, right: trailing)
+        case .rightToLeft:
+            self.init(top: top, left: trailing, bottom: bottom, right: leading)
+        }
     }
     
     public func hash(into hasher: inout Hasher) {

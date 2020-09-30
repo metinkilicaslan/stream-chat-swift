@@ -186,7 +186,7 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         bottomLayoutGuide.snp.makeConstraints {
             bottomEdgeInsetConstraint = $0.height.equalTo(style.edgeInsets.bottom).priority(999).constraint
             $0.bottom.equalToSuperview().priority(999)
-            $0.left.right.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
         }
         
         // MARK: Date
@@ -226,9 +226,9 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
                 make.bottom.equalTo(bottomLayoutGuide.snp.top).priority(999)
                 
                 if style.alignment == .left {
-                    make.left.equalToSuperview().offset(style.edgeInsets.left)
+                    make.leading.equalToSuperview().offset(style.edgeInsets.left)
                 } else {
-                    make.right.equalToSuperview().offset(-style.edgeInsets.right)
+                    make.trailing.equalToSuperview().offset(-style.edgeInsets.right)
                 }
             }
         }
@@ -243,8 +243,8 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         messageContainerView.addSubview(messageLabel)
         
         messageLabel.snp.makeConstraints { make in
-            make.left.equalTo(style.messageInsetSpacing.horizontal)
-            make.right.equalTo(-style.messageInsetSpacing.horizontal)
+            make.leading.equalTo(style.messageInsetSpacing.horizontal)
+            make.trailing.equalTo(-style.messageInsetSpacing.horizontal)
             make.top.equalTo(style.messageInsetSpacing.vertical).priority(999)
             make.bottom.equalTo(-style.messageInsetSpacing.vertical).priority(999)
         }
@@ -257,11 +257,11 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
             make.bottom.equalTo(bottomLayoutGuide.snp.top).priority(999)
             
             if style.alignment == .left {
-                make.left.equalToSuperview().offset(style.marginWithAvatarOffset).priority(999)
-                make.right.equalToSuperview().offset(-CGFloat.messageTextPaddingWithAvatar).priority(999)
+                make.leading.equalToSuperview().offset(style.marginWithAvatarOffset).priority(999)
+                make.trailing.equalToSuperview().offset(-CGFloat.messageTextPaddingWithAvatar).priority(999)
             } else {
-                make.left.equalToSuperview().offset(CGFloat.messageTextPaddingWithAvatar).priority(999)
-                make.right.equalToSuperview().offset(-style.marginWithAvatarOffset).priority(999)
+                make.leading.equalToSuperview().offset(CGFloat.messageTextPaddingWithAvatar).priority(999)
+                make.trailing.equalToSuperview().offset(-style.marginWithAvatarOffset).priority(999)
             }
         }
         
@@ -302,13 +302,13 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
             make.width.greaterThanOrEqualTo(minWidth)
             
             if style.reactionViewStyle.alignment == .left {
-                make.left.greaterThanOrEqualToSuperview().offset(style.marginWithAvatarOffset).priority(999)
-                make.right.greaterThanOrEqualTo(reactionsTailImage.snp.right)
+                make.leading.greaterThanOrEqualToSuperview().offset(style.marginWithAvatarOffset).priority(999)
+                make.trailing.greaterThanOrEqualTo(reactionsTailImage.snp.trailing)
                     .offset(style.reactionViewStyle.cornerRadius - tailAdditionalOffset)
                     .priority(998)
             } else {
-                make.right.lessThanOrEqualToSuperview().offset(-style.marginWithAvatarOffset).priority(999)
-                make.left.lessThanOrEqualTo(reactionsTailImage.snp.left)
+                make.trailing.lessThanOrEqualToSuperview().offset(-style.marginWithAvatarOffset).priority(999)
+                make.leading.lessThanOrEqualTo(reactionsTailImage.snp.leading)
                     .offset(tailAdditionalOffset - style.reactionViewStyle.cornerRadius)
                     .priority(998)
             }
@@ -324,14 +324,14 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         
         reactionsLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(CGFloat.reactionsTextPadding)
-            make.right.equalToSuperview().offset(-CGFloat.reactionsTextPadding)
+            make.leading.equalToSuperview().offset(CGFloat.reactionsTextPadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.reactionsTextPadding)
         }
         
         reactionsOverlayView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalTo(reactionsContainer).offset(-self.style.spacing.vertical)
-            make.right.equalTo(reactionsContainer).offset(self.style.spacing.vertical)
+            make.leading.equalTo(reactionsContainer).offset(-self.style.spacing.vertical)
+            make.trailing.equalTo(reactionsContainer).offset(self.style.spacing.vertical)
             make.bottom.equalTo(reactionsTailImage)
         }
     }
@@ -344,8 +344,9 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         button.setTitleColor(style.infoColor, for: .disabled)
         button.backgroundColor = backgroundColor
         
-        if style.alignment == .left {
+        if style.alignment.uiLayoutDirectionAdjusted == .left {
             button.setImage(UIImage.Icons.path, for: .normal)
+            button.semanticContentAttribute = .forceLeftToRight
         } else {
             button.setImage(UIImage.Icons.path.flip(orientation: .upMirrored)?.template, for: .normal)
             button.semanticContentAttribute = .forceRightToLeft
@@ -454,7 +455,7 @@ extension MessageTableViewCell {
         }
         
         readUsersView.snp.makeConstraints { make in
-            self.readUsersRightConstraint = make.right.equalTo(view.snp.left).offset(-self.style.spacing.vertical).constraint
+            self.readUsersRightConstraint = make.trailing.equalTo(view.snp.leading).offset(-self.style.spacing.vertical).constraint
             self.readUsersBottomConstraint = make.bottom.equalTo(view).constraint
         }
     }
@@ -466,13 +467,13 @@ extension MessageTableViewCell {
         
         additionalDateLabel.snp.makeConstraints { make in
             if style.alignment == .right {
-                self.additionalDateLabelSideConstraint = make.right
-                    .equalTo(view.snp.left)
+                self.additionalDateLabelSideConstraint = make.trailing
+                    .equalTo(view.snp.leading)
                     .offset(-self.style.spacing.vertical)
                     .constraint
             } else {
-                self.additionalDateLabelSideConstraint = make.left
-                    .equalTo(view.snp.right)
+                self.additionalDateLabelSideConstraint = make.leading
+                    .equalTo(view.snp.trailing)
                     .offset(self.style.spacing.vertical)
                     .constraint
             }

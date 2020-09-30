@@ -100,7 +100,7 @@ extension MessageTableViewCell {
             return nil
         }
         
-        if style.alignment == .left {
+        if style.alignment.uiLayoutDirectionAdjusted == .left {
             return offset == 0 ? messageContainerView.image : style.backgroundImages[.rightSide]?.image(for: traitCollection)
         }
         
@@ -112,7 +112,7 @@ extension MessageTableViewCell {
             return nil
         }
         
-        if style.alignment == .left {
+        if style.alignment.uiLayoutDirectionAdjusted == .left {
             if offset == 0,
                 messageContainerViewImage == style.backgroundImages[.pointedLeftBottom]?.image(for: traitCollection) {
                 return style.transparentBackgroundImages[.pointedLeftBottom]?.image(for: traitCollection)

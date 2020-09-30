@@ -169,7 +169,7 @@ extension ComposerViewStyle {
                     color: UIColor,
                     selectedColor: UIColor,
                     height: CGFloat = .composerReplyInChannelHeight,
-                    edgeInsets: UIEdgeInsets = .init(top: 0, left: .composerCornerRadius, bottom: -.messageEdgePadding, right: 0)) {
+                    edgeInsets: UIEdgeInsets = .init(top: 0, leading: .composerCornerRadius, bottom: -.messageEdgePadding, trailing: 0)) {
             self.text = text
             self.font = font
             self.color = color

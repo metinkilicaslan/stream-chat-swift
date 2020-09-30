@@ -40,7 +40,7 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
         imageView.snp.makeConstraints {
             $0.top.equalToSuperview().priority(999)
             imageViewBottomConstraint = $0.bottom.equalToSuperview().priority(999).constraint
-            $0.left.right.equalToSuperview().priority(999)
+            $0.leading.trailing.equalToSuperview().priority(999)
         }
         
         imageView.setContentHuggingPriority(.required - 3, for: .vertical)
@@ -59,7 +59,7 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
         stackView.snp.makeConstraints { make in
             linkStackViewTopConstraint = make.top.equalToSuperview().priority(999).constraint
             make.bottom.equalToSuperview().offset(-CGFloat.messageCornerRadius).priority(999)
-            make.left.right.equalToSuperview()
+            make.leading.right.equalToSuperview()
         }
         
         return stackView
@@ -76,8 +76,8 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
         
         label.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(CGFloat.messageCornerRadius)
-            make.right.equalToSuperview().offset(-CGFloat.messageCornerRadius)
+            make.leading.equalToSuperview().offset(CGFloat.messageCornerRadius)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageCornerRadius)
         }
         
         label.setContentCompressionResistancePriority(.required - 1, for: .vertical)
@@ -96,8 +96,8 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
         
         label.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(CGFloat.messageCornerRadius)
-            make.right.equalToSuperview().offset(-CGFloat.messageCornerRadius)
+            make.leading.equalToSuperview().offset(CGFloat.messageCornerRadius)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageCornerRadius)
         }
         
         label.setContentCompressionResistancePriority(.required - 2, for: .vertical)
@@ -117,8 +117,8 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
             make.top.equalTo(imageView.snp.bottom).offset(CGFloat.messageSpacing).priority(999)
             make.height.equalTo(CGFloat.attachmentPreviewActionButtonHeight)
             make.bottom.equalToSuperview().priority(999)
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
         }
         
         return stackView
@@ -349,7 +349,7 @@ final class ImageAttachmentPreview: UIView, AttachmentPreview {
     func showLogo(image: UIImage) {
         let logoImageView = UIImageView(image: image)
         imageView.addSubview(logoImageView)
-        logoImageView.snp.makeConstraints { $0.right.bottom.equalToSuperview().offset(CGFloat.messageCornerRadius / -2) }
+        logoImageView.snp.makeConstraints { $0.trailing.bottom.equalToSuperview().offset(CGFloat.messageCornerRadius / -2) }
     }
     
     private func createActionButton(title: String, style: Attachment.ActionStyle) -> UIButton {

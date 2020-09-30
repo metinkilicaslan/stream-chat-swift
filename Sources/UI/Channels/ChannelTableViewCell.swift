@@ -107,7 +107,7 @@ open class ChannelTableViewCell: UITableViewCell, Reusable {
                     make.top.equalToSuperview().offset(style.edgeInsets.top).priority(999)
                 }
                 make.bottom.lessThanOrEqualToSuperview().offset(-style.edgeInsets.bottom).priority(999)
-                make.left.equalToSuperview().offset(style.edgeInsets.left)
+                make.leading.equalToSuperview().offset(style.edgeInsets.left)
                 make.size.equalTo(avatarViewStyle.size)
             }
         }
@@ -115,29 +115,29 @@ open class ChannelTableViewCell: UITableViewCell, Reusable {
         nameLabel.snp.makeConstraints { make in
             if style.verticalTextAlignment == .center {
                 make.bottom.equalTo(contentView.snp.centerY).offset(style.spacing.vertical / -2).priority(999)
-                make.left.equalTo(avatarView.snp.right).offset(style.spacing.horizontal)
+                make.leading.equalTo(avatarView.snp.trailing).offset(style.spacing.horizontal)
             } else {
                 make.top.equalToSuperview().offset(style.edgeInsets.top).priority(999)
                 
                 if hasAvatar {
-                    make.left.equalTo(avatarView.snp.right).offset(style.spacing.horizontal)
+                    make.leading.equalTo(avatarView.snp.trailing).offset(style.spacing.horizontal)
                 } else {
-                    make.left.equalToSuperview().offset(style.edgeInsets.left)
+                    make.leading.equalToSuperview().offset(style.edgeInsets.left)
                 }
             }
             
-            make.right.lessThanOrEqualTo(dateLabel.snp.left).offset(-style.spacing.horizontal)
+            make.trailing.lessThanOrEqualTo(dateLabel.snp.leading).offset(-style.spacing.horizontal)
         }
         
         dateLabel.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-style.edgeInsets.right)
+            make.trailing.equalToSuperview().offset(-style.edgeInsets.right)
             make.centerY.equalTo(nameLabel.snp.centerY)
         }
         
         dateLabel.setContentCompressionResistancePriority(.required, for: .horizontal)
         
         infoLabel.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-style.edgeInsets.right)
+            make.trailing.equalToSuperview().offset(-style.edgeInsets.right)
             make.centerY.equalTo(messageLabel.snp.centerY)
         }
         
@@ -150,8 +150,8 @@ open class ChannelTableViewCell: UITableViewCell, Reusable {
                 make.top.equalTo(nameLabel.snp.bottom).offset(style.spacing.vertical).priority(999)
             }
             
-            make.left.equalTo(nameLabel)
-            make.right.equalTo(infoLabel.snp.left).offset(-style.spacing.horizontal)
+            make.leading.equalTo(nameLabel)
+            make.trailing.equalTo(infoLabel.snp.leading).offset(-style.spacing.horizontal)
             make.bottom.lessThanOrEqualToSuperview().offset(-style.edgeInsets.bottom).priority(999)
         }
     }

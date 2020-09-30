@@ -53,8 +53,8 @@ extension UIView {
         snp.makeConstraints {
             $0.top.equalTo(parent.safeAreaLayoutGuide.snp.topMargin)
             $0.bottom.equalTo(parent.safeAreaLayoutGuide.snp.bottomMargin)
-            $0.left.equalTo(parent.safeAreaLayoutGuide.snp.leftMargin)
-            $0.right.equalTo(parent.safeAreaLayoutGuide.snp.rightMargin)
+            $0.leading.equalTo(parent.safeAreaLayoutGuide.snp.leadingMargin)
+            $0.trailing.equalTo(parent.safeAreaLayoutGuide.snp.trailingMargin)
         }
     }
     

@@ -21,8 +21,8 @@ final class BannerView: UIView {
         
         label.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(CGFloat.composerInnerPadding)
-            make.right.equalToSuperview().offset(-CGFloat.composerInnerPadding)
+            make.leading.equalToSuperview().offset(CGFloat.composerInnerPadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.composerInnerPadding)
         }
         
         return label
