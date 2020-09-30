@@ -15,6 +15,9 @@ import RxCocoa
 
 /// A chat view controller of a channel.
 open class ChatViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
+    /// Localization support
+    private let chatLocalizer =  ChatLocalizer()
+    open var localization: ChatLocalizing { chatLocalizer }
     /// A chat style.
     public lazy var style = defaultStyle
     /// A default chat style. This is useful for subclasses.
@@ -84,7 +87,7 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     
     private(set) lazy var composerEditingContainerView = createComposerEditingContainerView()
     private(set) lazy var composerCommandsContainerView = createComposerCommandsContainerView()
-    private(set) lazy var composerAddFileContainerView = createComposerAddFileContainerView(title: "Add a file")
+    private(set) lazy var composerAddFileContainerView = createComposerAddFileContainerView(title: localization.addFileSheetTitle)
     
     /// A table view of messages.
     public private(set) lazy var tableView: TableView = {
