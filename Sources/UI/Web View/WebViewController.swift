@@ -94,7 +94,7 @@ open class WebViewController: UIViewController, WKNavigationDelegate {
         
         webView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.topMargin)
-            make.left.right.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
     

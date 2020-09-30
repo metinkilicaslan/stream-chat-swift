@@ -86,6 +86,10 @@ extension UIImage {
         let bundle = Bundle(for: ComposerView.self)
         return UIImage(named: name, in: bundle, compatibleWith: nil)
     }
+    
+    public var uiLayoutDirectionAdjusted: UIImage? {
+        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? self.flip(orientation: .upMirrored)?.template : self
+    }
 }
 
 // swiftlint:disable line_length

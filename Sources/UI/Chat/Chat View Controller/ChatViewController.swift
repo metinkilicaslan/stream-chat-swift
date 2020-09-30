@@ -104,7 +104,7 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
             tableView.contentInset = UIEdgeInsets(top: style.incomingMessage.edgeInsets.top, leading: 0, bottom: 0, trailing: 0)
             
             tableView.snp.makeConstraints { make in
-                make.left.top.right.equalToSuperview()
+                make.leading.top.trailing.equalToSuperview()
                 tableViewBottomConstraint = make.bottom.equalToSuperview().offset(-tableViewBottomInset).constraint
             }
         } else {

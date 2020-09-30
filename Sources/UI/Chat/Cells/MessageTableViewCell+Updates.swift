@@ -39,17 +39,7 @@ extension MessageTableViewCell {
             return nil
         }
         
-        var alignment = style.alignment
-        
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            if alignment == .left {
-                alignment = .right
-            } else {
-                alignment = .left
-            }
-        }
-        
-        return alignment == .left
+        return style.alignment.uiLayoutDirectionAdjusted == .left
             ? (isContinueMessage
                 ? style.backgroundImages[.rightSide]?.image(for: traitCollection)
                 : style.backgroundImages[.pointedLeftBottom]?.image(for: traitCollection))

@@ -15,6 +15,18 @@ public struct MessageViewStyle: Hashable {
     public enum Alignment: String {
         /// A message view style alignment.
         case left, right
+        
+        public var uiLayoutDirectionAdjusted: Alignment {
+            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+                if self == .left {
+                    return .right
+                }
+                
+                return .left
+            }
+            
+            return self
+        }
     }
     
     /// Additional date style will work with `showTimeThreshold` paramenter.

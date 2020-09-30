@@ -80,8 +80,7 @@ public final class ComposerView: UIView {
     /// A send button.
     public private(set) lazy var sendButton: UIButton = {
         let button = UIButton(frame: .zero)
-        let image = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? UIImage.Icons.send.flip(orientation: .upMirrored)?.template : UIImage.Icons.send
-        button.setImage(image, for: .normal)
+        button.setImage(UIImage.Icons.send.uiLayoutDirectionAdjusted, for: .normal)
         button.backgroundColor = backgroundColor
         button.titleLabel?.font = .chatMediumBold
         

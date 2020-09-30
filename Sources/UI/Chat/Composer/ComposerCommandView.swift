@@ -18,8 +18,8 @@ final class ComposerCommandView: UIView {
         addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.leading.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
             make.top.equalToSuperview().offset(CGFloat.messageSpacing).priority(999)
         }
         
@@ -33,8 +33,8 @@ final class ComposerCommandView: UIView {
         addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.leading.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
             make.top.equalTo(commandLabel.snp.bottom).priority(999)
             make.bottom.equalToSuperview().offset(-CGFloat.messageSpacing).priority(999)
         }

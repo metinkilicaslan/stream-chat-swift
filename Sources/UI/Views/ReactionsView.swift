@@ -156,8 +156,8 @@ final class ReactionsView: UIView {
         reactionsView.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.reactionsPickerCornerRadius / 2)
-            make.right.equalToSuperview().offset(CGFloat.reactionsPickerCornerRadius / -2)
+            make.leading.equalToSuperview().offset(CGFloat.reactionsPickerCornerRadius / 2)
+            make.trailing.equalToSuperview().offset(CGFloat.reactionsPickerCornerRadius / -2)
         }
         
         return stackView

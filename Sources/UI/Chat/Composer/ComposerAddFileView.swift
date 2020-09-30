@@ -65,7 +65,7 @@ public final class ComposerAddFileView: UIView {
             
             iconImageView.snp.makeConstraints { make in
                 make.width.height.equalTo(CGFloat.composerHelperIconSize)
-                make.left.equalToSuperview().offset(CGFloat.messageEdgePadding)
+                make.leading.equalToSuperview().offset(CGFloat.messageEdgePadding)
                 make.centerY.equalToSuperview()
             }
         }
@@ -73,13 +73,13 @@ public final class ComposerAddFileView: UIView {
         addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
             make.centerY.equalToSuperview()
 
             if let iconImageView = iconImageView {
-                make.left.equalTo(iconImageView.snp.right).offset(CGFloat.composerHelperButtonEdgePadding)
+                make.leading.equalTo(iconImageView.snp.trailing).offset(CGFloat.composerHelperButtonEdgePadding)
             } else {
-                make.left.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
+                make.leading.equalToSuperview().offset(CGFloat.composerHelperTitleEdgePadding)
             }
         }
         

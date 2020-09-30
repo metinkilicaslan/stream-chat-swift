@@ -14,10 +14,16 @@ import RxCocoa
 
 // MARK: - Images Collection View
 
+class RTLFlowLayout: UICollectionViewFlowLayout {
+    override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+    }
+}
+
 extension ComposerView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func setupImagesCollectionView() -> UICollectionView {
-        let collectionViewLayout = UICollectionViewFlowLayout()
+        let collectionViewLayout = RTLFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.itemSize = CGSize(width: .composerAttachmentSize, height: .composerAttachmentSize)
         collectionViewLayout.minimumLineSpacing = .composerCornerRadius / 2

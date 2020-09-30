@@ -37,17 +37,17 @@ final class ReadUsersView: UIView {
         
         rightAvatarView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalTo(CGFloat.messageReadUsersSize / 2)
+            make.leading.equalTo(CGFloat.messageReadUsersSize / 2)
         }
         
         leftAvatarView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.left.equalToSuperview()
+            make.leading.equalToSuperview()
         }
         
         countLabel.snp.makeConstraints { make in
-            make.top.bottom.right.equalToSuperview()
-            make.left.equalTo(1.5 * CGFloat.messageReadUsersSize)
+            make.top.bottom.trailing.equalToSuperview()
+            make.leading.equalTo(1.5 * CGFloat.messageReadUsersSize)
         }
     }
     

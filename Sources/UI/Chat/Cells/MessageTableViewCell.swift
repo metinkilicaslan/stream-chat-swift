@@ -228,7 +228,7 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
                 if style.alignment == .left {
                     make.leading.equalToSuperview().offset(style.edgeInsets.left)
                 } else {
-                    make.trailing.equalToSuperview().offset(-style.edgeInsets.left)
+                    make.trailing.equalToSuperview().offset(-style.edgeInsets.right)
                 }
             }
         }
@@ -344,18 +344,9 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         button.setTitleColor(style.infoColor, for: .disabled)
         button.backgroundColor = backgroundColor
         
-        var alignment = style.alignment
-        
-        if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
-            if alignment == .left {
-                alignment = .right
-            } else {
-                alignment = .left
-            }
-        }
-        
-        if alignment == .left {
+        if style.alignment.uiLayoutDirectionAdjusted == .left {
             button.setImage(UIImage.Icons.path, for: .normal)
+            button.semanticContentAttribute = .forceLeftToRight
         } else {
             button.setImage(UIImage.Icons.path.flip(orientation: .upMirrored)?.template, for: .normal)
             button.semanticContentAttribute = .forceRightToLeft

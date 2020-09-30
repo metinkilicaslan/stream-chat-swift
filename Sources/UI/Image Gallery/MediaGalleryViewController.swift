@@ -26,8 +26,8 @@ public class MediaGalleryViewController: UIViewController {
         view.addSubview(pageControl)
         
         pageControl.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(CGFloat.messageEdgePadding)
-            make.right.equalToSuperview().offset(-CGFloat.messageEdgePadding)
+            make.leading.equalToSuperview().offset(CGFloat.messageEdgePadding)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageEdgePadding)
             make.bottom.equalToSuperview().offset(-CGFloat.messageInnerPadding)
         }
         
@@ -80,7 +80,7 @@ public class MediaGalleryViewController: UIViewController {
         
         closeButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.topMargin).offset(CGFloat.messageSpacing)
-            make.right.equalToSuperview().offset(-CGFloat.messageSpacing)
+            make.trailing.equalToSuperview().offset(-CGFloat.messageSpacing)
             make.width.height.equalTo(MediaGalleryViewController.closeButtonWidth)
         }
     }
@@ -234,8 +234,8 @@ fileprivate final class MediaGalleryCollectionViewCell: UICollectionViewCell, UI
         label.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(CGFloat.messageSpacing)
             let offset: CGFloat = MediaGalleryViewController.closeButtonWidth + 2 * .messageSpacing
-            make.left.equalToSuperview().offset(offset)
-            make.right.equalToSuperview().offset(-offset)
+            make.leading.equalToSuperview().offset(offset)
+            make.trailing.equalToSuperview().offset(-offset)
             make.height.equalTo(MediaGalleryViewController.closeButtonWidth)
         }
         
@@ -302,7 +302,7 @@ fileprivate final class MediaGalleryCollectionViewCell: UICollectionViewCell, UI
     fileprivate  func addLogo(image: UIImage) {
         let logoImageView = UIImageView(image: image)
         imageView.addSubview(logoImageView)
-        logoImageView.snp.makeConstraints { $0.right.bottom.equalToSuperview().offset(CGFloat.messageCornerRadius / -2) }
+        logoImageView.snp.makeConstraints { $0.trailing.bottom.equalToSuperview().offset(CGFloat.messageCornerRadius / -2) }
         self.logoImageView = logoImageView
     }
     

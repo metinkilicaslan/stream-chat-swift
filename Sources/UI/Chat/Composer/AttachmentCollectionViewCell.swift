@@ -57,14 +57,14 @@ public final class AttachmentCollectionViewCell: UICollectionViewCell, Reusable 
         
         removeButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(2)
-            make.right.equalToSuperview().offset(-2)
+            make.trailing.equalToSuperview().offset(-2)
         }
         
         contentView.addSubview(progressView)
         
         progressView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(cornerRadius)
-            make.right.equalToSuperview().offset(-cornerRadius)
+            make.leading.equalToSuperview().offset(cornerRadius)
+            make.trailing.equalToSuperview().offset(-cornerRadius)
             make.bottom.equalToSuperview().offset(-cornerRadius)
         }
     }
