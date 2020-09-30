@@ -9,7 +9,6 @@
 import Foundation
 
 extension Date {
-    
     /// Checks if the date if today.
     public var isToday: Bool {
         return Calendar.current.isDateInToday(self)
