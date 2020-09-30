@@ -26,6 +26,8 @@ extension Date {
     public static var yesterday = "Yesterday"
     /// A words separator for day and time.
     public static var wordsSeparator = ", "
+    /// Custom locale to switch instantly
+    public static var customLocale: Locale = Locale.current
     
     /// A relative date from the current time in string.
     public var relative: String {
@@ -65,39 +67,35 @@ extension Date {
 extension DateFormatter {
     
     /// A short time formatter from the date.
-    public static let time: DateFormatter = {
+    public static var time: DateFormatter {
         let formatter = DateFormatter()
+        formatter.locale = Date.customLocale
         formatter.timeStyle = .short
         formatter.dateStyle = .none
         return formatter
-    }()
+    }
     
     /// A short date and time formatter from the date.
-    public static let short: DateFormatter = {
+    public static var shortDate: DateFormatter {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.dateStyle = .short
-        return formatter
-    }()
-    
-    /// A short date and time formatter from the date.
-    public static let shortDate: DateFormatter = {
-        let formatter = DateFormatter()
+        formatter.locale = Date.customLocale
         formatter.timeStyle = .none
         formatter.dateStyle = .short
         return formatter
-    }()
+    }
 
     /// A week formatter from the date.
-    public static let weekDay: DateFormatter = {
+    public static var weekDay: DateFormatter {
         let formatter = DateFormatter()
+        formatter.locale = Date.customLocale
         formatter.dateFormat = "EEEE"
         return formatter
-    }()
+    }
     
-    static let fileName: DateFormatter = {
+    static var fileName: DateFormatter {
         let formatter = DateFormatter()
+        formatter.locale = Date.customLocale
         formatter.dateFormat = "yyyy_MM_dd_HHmmss"
         return formatter
-    }()
+    }
 }
