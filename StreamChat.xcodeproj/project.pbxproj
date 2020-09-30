@@ -40,6 +40,7 @@
 		79EE3944245320690034EBF3 /* ClientTests02+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0D94B23D4ABC50080B8BC /* ClientTests02+Users.swift */; };
 		79EE3946245321820034EBF3 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6206C23CF642900AB3426 /* TestCase.swift */; };
 		79EE3947245322620034EBF3 /* User+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F69D1230ECCD300B8CC1F /* User+Tests.swift */; };
+		7BCA4D6025236DBB002FC6B1 /* ChatLocalizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA4D5C25236468002FC6B1 /* ChatLocalizing.swift */; };
 		80B937A52434F5FC003D950E /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B937A42434F5FC003D950E /* Array+Extensions.swift */; };
 		8A0673B42445E0570042CFD3 /* Channel+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0673B32445E0570042CFD3 /* Channel+Config.swift */; };
 		8A0C80DA2453333600124413 /* UploadingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0C80D92453333600124413 /* UploadingItem.swift */; };
@@ -332,6 +333,7 @@
 		79CABB0C246457EE00240052 /* VirtualTimers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualTimers.swift; sourceTree = "<group>"; };
 		79D50C7624321BDA0052BA03 /* Client+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Events.swift"; sourceTree = "<group>"; };
 		79EE39372453204E0034EBF3 /* StreamChatClientIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatClientIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BCA4D5C25236468002FC6B1 /* ChatLocalizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLocalizing.swift; sourceTree = "<group>"; };
 		80B937A42434F5FC003D950E /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		8A0673B32445E0570042CFD3 /* Channel+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Channel+Config.swift"; sourceTree = "<group>"; };
 		8A0C80D92453333600124413 /* UploadingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingItem.swift; sourceTree = "<group>"; };
@@ -1103,6 +1105,7 @@
 				8ACC7CBB241924BE000750E4 /* ChatViewController+Reactions.swift */,
 				8ACC7CBC241924BE000750E4 /* ChatViewController+MessageActions.swift */,
 				8ACC7CBD241924BE000750E4 /* ChatViewController+Cells.swift */,
+				7BCA4D5C25236468002FC6B1 /* ChatLocalizing.swift */,
 			);
 			path = "Chat View Controller";
 			sourceTree = "<group>";
@@ -1791,6 +1794,7 @@
 				8ACC7D39241924BE000750E4 /* UIColor+Extensions.swift in Sources */,
 				8ACC7D0D241924BE000750E4 /* ComposerView+Images.swift in Sources */,
 				8ACC7D1A241924BE000750E4 /* ChatViewController+Reactions.swift in Sources */,
+				7BCA4D6025236DBB002FC6B1 /* ChatLocalizing.swift in Sources */,
 				8ACC7D12241924BE000750E4 /* UploaderItem+UIImagePickerController.swift in Sources */,
 				8ACC7D34241924BE000750E4 /* UIView+Extensions.swift in Sources */,
 				8ACC7D19241924BE000750E4 /* ChatViewController+TableFooterView.swift in Sources */,

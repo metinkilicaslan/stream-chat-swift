@@ -63,36 +63,36 @@ extension ChatViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if messageActions.contains(.reactions), presenter.channel.config.reactionsEnabled {
-            alert.addAction(.init(title: "Reactions", style: .default, handler: { [weak self] _ in
+            alert.addAction(.init(title: localization.reactions, style: .default, handler: { [weak self] _ in
                 self?.showReactions(from: cell, in: message, locationInView: locationInView)
             }))
         }
         
         if messageActions.contains(.reply), presenter.canReply {
-            alert.addAction(.init(title: "Reply", style: .default, handler: { [weak self] _ in
+            alert.addAction(.init(title: localization.reply, style: .default, handler: { [weak self] _ in
                 self?.showReplies(parentMessage: message)
             }))
         }
         
         if messageActions.contains(.edit), message.canEdit {
-            alert.addAction(.init(title: "Edit", style: .default, handler: { [weak self] _ in
+            alert.addAction(.init(title: localization.edit, style: .default, handler: { [weak self] _ in
                 self?.edit(message: message)
             }))
         }
         
         if messageActions.contains(.copy), let copyAction = copyAction(for: message) {
-            alert.addAction(.init(title: "Copy", style: .default, handler: { _ in copyAction() }))
+            alert.addAction(.init(title: localization.copy, style: .default, handler: { _ in copyAction() }))
         }
         
         if !message.user.isCurrent {
             // Mute.
             if messageActions.contains(.muteUser), presenter.channel.config.mutesEnabled {
                 if message.user.isMuted {
-                    alert.addAction(.init(title: "Unmute", style: .default, handler: { [weak self] _ in
+                    alert.addAction(.init(title: localization.unmute, style: .default, handler: { [weak self] _ in
                         self?.unmute(user: message.user)
                     }))
                 } else {
-                    alert.addAction(.init(title: "Mute", style: .default, handler: { [weak self] _ in
+                    alert.addAction(.init(title: localization.mute, style: .default, handler: { [weak self] _ in
                         self?.mute(user: message.user)
                     }))
                 }
@@ -145,7 +145,7 @@ extension ChatViewController {
         }
         
         if messageActions.contains(.delete), message.canDelete {
-            alert.addAction(.init(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            alert.addAction(.init(title: localization.delete, style: .destructive, handler: { [weak self] _ in
                 self?.conformDeleting(message: message)
             }))
         }
@@ -154,7 +154,7 @@ extension ChatViewController {
             return nil
         }
         
-        alert.addAction(.init(title: "Cancel", style: .cancel, handler: { _ in }))
+        alert.addAction(.init(title: localization.cancel, style: .cancel, handler: { _ in }))
         
         if UIDevice.isPad, let popoverPresentationController = alert.popoverPresentationController {
             let cellPositionY = tableView.convert(cell.frame, to: UIScreen.main.coordinateSpace).minY + locationInView.y
@@ -217,15 +217,15 @@ extension ChatViewController {
             text = message.text.count > 100 ? String(message.text.prefix(100)) + "..." : message.text
         }
         
-        let alert = UIAlertController(title: "Delete message?", message: text, preferredStyle: .alert)
+        let alert = UIAlertController(title: localization.deleteAlertTitle, message: text, preferredStyle: .alert)
         
-        alert.addAction(.init(title: "Delete", style: .destructive, handler: { [weak self] _ in
+        alert.addAction(.init(title: localization.delete, style: .destructive, handler: { [weak self] _ in
             if let self = self {
                 message.rx.delete().subscribe().disposed(by: self.disposeBag)
             }
         }))
         
-        alert.addAction(.init(title: "Cancel", style: .cancel, handler: { _ in }))
+        alert.addAction(.init(title: localization.cancel, style: .cancel, handler: { _ in }))
         
         present(alert, animated: true)
     }
@@ -354,36 +354,39 @@ extension ChatViewController {
         var actions = [UIAction]()
         
         if messageActions.contains(.reactions), presenter.channel.config.reactionsEnabled {
-            actions.append(UIAction(title: "Reactions", image: UIImage(systemName: "smiley")) { [weak self] _ in
+            actions.append(UIAction(title: localization.reactions, image: UIImage(systemName: "smiley")) { [weak self] _ in
                 self?.showReactions(from: cell, in: message, locationInView: locationInView)
             })
         }
         
         if messageActions.contains(.reply), presenter.canReply {
-            actions.append(UIAction(title: "Reply", image: UIImage(systemName: "arrowshape.turn.up.left")) { [weak self] _ in
+            actions.append(
+                UIAction(title: localization.reply,
+                         image: UIImage(systemName: "arrowshape.turn.up.left")) { [weak self] _ in
                 self?.showReplies(parentMessage: message)
             })
         }
         
         if messageActions.contains(.edit), message.canEdit {
-            actions.append(UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] _ in
+            actions.append(UIAction(title: localization.edit, image: UIImage(systemName: "pencil")) { [weak self] _ in
                 self?.edit(message: message)
             })
         }
         
         if messageActions.contains(.copy), let copyAction = copyAction(for: message) {
-            actions.append(UIAction(title: "Copy", image: UIImage(systemName: "doc.on.doc")) { _ in copyAction() })
+            actions.append(UIAction(title: localization.copy, image: UIImage(systemName: "doc.on.doc")) { _ in copyAction() })
         }
         
         if !message.user.isCurrent {
             // Mute.
             if messageActions.contains(.muteUser), presenter.channel.config.mutesEnabled {
                 if message.user.isMuted {
-                    actions.append(UIAction(title: "Unmute", image: UIImage(systemName: "speaker")) { [weak self] _ in
+                    actions.append(UIAction(title: localization.unmute, image: UIImage(systemName: "speaker")) { [weak self] _ in
                         self?.unmute(user: message.user)
                     })
                 } else {
-                    actions.append(UIAction(title: "Mute", image: UIImage(systemName: "speaker.slash")) { [weak self] _ in
+                    actions.append(UIAction(title: localization.mute,
+                                            image: UIImage(systemName: "speaker.slash")) { [weak self] _ in
                         self?.mute(user: message.user)
                     })
                 }
@@ -444,7 +447,7 @@ extension ChatViewController {
         }
         
         if messageActions.contains(.delete), message.canDelete {
-            actions.append(UIAction(title: "Delete",
+            actions.append(UIAction(title: localization.delete,
                                     image: UIImage(systemName: "trash"),
                                     attributes: [.destructive]) { [weak self] _ in
                                         self?.conformDeleting(message: message)
