@@ -16,7 +16,7 @@ import RxCocoa
 /// A chat view controller of a channel.
 open class ChatViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
     /// Localization support
-    private let chatLocalizer =  ChatLocalizer()
+    private lazy var chatLocalizer =  ChatLocalizer()
     open var localization: ChatLocalizing { chatLocalizer }
     /// A chat style.
     public lazy var style = defaultStyle
