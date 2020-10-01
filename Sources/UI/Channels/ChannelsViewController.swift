@@ -14,7 +14,10 @@ import RxCocoa
 
 /// A channels view controller.
 open class ChannelsViewController: ViewController {
-    
+
+    /// Localization support
+    private let channelsLocalizer =  ChannelsLocalizer()
+    open var localization: ChannelsLocalizing { channelsLocalizer }
     /// A dispose bag for rx subscriptions.
     public var disposeBag = DisposeBag()
     /// A chat style.
@@ -178,7 +181,7 @@ open class ChannelsViewController: ViewController {
         updateChannelCellAvatarView(in: cell, channel: channelPresenter.channel)
         
         if let lastMessage = channelPresenter.lastMessage {
-            var text = lastMessage.isDeleted ? "Message was deleted" : lastMessage.textOrArgs
+            var text = lastMessage.isDeleted ? localization.deletedMessageInfo : lastMessage.textOrArgs
             
             if text.isEmpty, let first = lastMessage.attachments.first {
                 text = first.title.isEmpty ? ((first.url ?? first.imageURL)?.lastPathComponent) ?? "" : first.title
@@ -190,7 +193,7 @@ open class ChannelsViewController: ViewController {
             cell.update(date: lastMessage.updated)
             
         } else {
-            cell.update(message: "No messages", isMeta: true, isUnread: false)
+            cell.update(message: localization.noMessageInfo, isMeta: true, isUnread: false)
         }
     }
     

@@ -14,6 +14,9 @@ import RxCocoa
 /// A channel presenter.
 public final class ChannelPresenter: Presenter {
     typealias EphemeralType = (message: Message?, updated: Bool)
+
+    /// A variable to localize start of thread title
+    public static var threadTitle: String = "Start of thread"
     
     /// A callback type for the adding an extra data for a new message.
     public typealias MessageExtraDataCallback = (_ id: String, _ text: String, [Attachment], _ parentId: String?) -> Codable?

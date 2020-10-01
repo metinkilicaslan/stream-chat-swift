@@ -40,6 +40,7 @@
 		79EE3944245320690034EBF3 /* ClientTests02+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC0D94B23D4ABC50080B8BC /* ClientTests02+Users.swift */; };
 		79EE3946245321820034EBF3 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE6206C23CF642900AB3426 /* TestCase.swift */; };
 		79EE3947245322620034EBF3 /* User+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6F69D1230ECCD300B8CC1F /* User+Tests.swift */; };
+		7BB3E2942526076B006A764F /* ChannelsLocalizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD15542524C18F00B01ECF /* ChannelsLocalizing.swift */; };
 		7BCA4D6025236DBB002FC6B1 /* ChatLocalizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCA4D5C25236468002FC6B1 /* ChatLocalizing.swift */; };
 		80B937A52434F5FC003D950E /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B937A42434F5FC003D950E /* Array+Extensions.swift */; };
 		8A0673B42445E0570042CFD3 /* Channel+Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0673B32445E0570042CFD3 /* Channel+Config.swift */; };
@@ -334,6 +335,7 @@
 		79D50C7624321BDA0052BA03 /* Client+Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Events.swift"; sourceTree = "<group>"; };
 		79EE39372453204E0034EBF3 /* StreamChatClientIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamChatClientIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BCA4D5C25236468002FC6B1 /* ChatLocalizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatLocalizing.swift; sourceTree = "<group>"; };
+		7BCD15542524C18F00B01ECF /* ChannelsLocalizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsLocalizing.swift; sourceTree = "<group>"; };
 		80B937A42434F5FC003D950E /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		8A0673B32445E0570042CFD3 /* Channel+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Channel+Config.swift"; sourceTree = "<group>"; };
 		8A0C80D92453333600124413 /* UploadingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingItem.swift; sourceTree = "<group>"; };
@@ -1270,6 +1272,7 @@
 			children = (
 				8ACC7D03241924BE000750E4 /* ChannelsViewController.swift */,
 				8ACC7D04241924BE000750E4 /* ChannelTableViewCell.swift */,
+				7BCD15542524C18F00B01ECF /* ChannelsLocalizing.swift */,
 			);
 			path = Channels;
 			sourceTree = "<group>";
@@ -1819,6 +1822,7 @@
 				8ACC7D2F241924BE000750E4 /* UIImage+Icons.swift in Sources */,
 				8ACC7D28241924BE000750E4 /* VerticalAlignment.swift in Sources */,
 				8ACC7D32241924BE000750E4 /* UITapGestureRecognizer+Extensions.swift in Sources */,
+				7BB3E2942526076B006A764F /* ChannelsLocalizing.swift in Sources */,
 				8ACC7D2C241924BE000750E4 /* Banners.swift in Sources */,
 				8ACC7D44241924BE000750E4 /* Reusable.swift in Sources */,
 				8ACC7D25241924BE000750E4 /* SeparatorStyle.swift in Sources */,

@@ -1,6 +1,6 @@
 //
 //  ChatLocalizing.swift
-//  StreamChatClient
+//  StreamChat
 //
 //  Created by Egemen Ayhan on 29.09.2020.
 //  Copyright © 2020 Stream.io Inc. All rights reserved.
@@ -9,6 +9,8 @@
 import Foundation
 
 public protocol ChatLocalizing {
+
+    // MARK: - Message Actions
     var edit: String { get }
     var reply: String { get }
     var copy: String { get }
@@ -18,13 +20,19 @@ public protocol ChatLocalizing {
     var delete: String { get }
     var cancel: String { get }
     var deleteAlertTitle: String { get }
+    var deletedMessageContent: String { get }
+
+    // MARK: - Add File
     var addFileSheetTitle: String { get }
     var uploadMediaTitle: String { get }
     var uploadFromCameraTitle: String { get }
     var uploadFileTitle: String { get }
+
 }
 
 public extension ChatLocalizing {
+
+    // MARK: - Message Actions
     var edit: String {
         return "Edit"
     }
@@ -52,6 +60,11 @@ public extension ChatLocalizing {
     var deleteAlertTitle: String {
         return "Delete message?"
     }
+    var deletedMessageContent: String {
+        return "Message was deleted"
+    }
+
+    // MARK: - Add File
     var addFileSheetTitle: String {
         return "Add a file"
     }
@@ -64,6 +77,7 @@ public extension ChatLocalizing {
     var uploadFileTitle: String {
         return "Upload a file"
     }
+
 }
 
 public struct ChatLocalizer: ChatLocalizing {
