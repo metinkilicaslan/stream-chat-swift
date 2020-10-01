@@ -16,7 +16,7 @@ import RxCocoa
 open class ChannelsViewController: ViewController {
 
     /// Localization support
-    private let channelsLocalizer =  ChannelsLocalizer()
+    private lazy var channelsLocalizer =  ChannelsLocalizer()
     open var localization: ChannelsLocalizing { channelsLocalizer }
     /// A dispose bag for rx subscriptions.
     public var disposeBag = DisposeBag()
