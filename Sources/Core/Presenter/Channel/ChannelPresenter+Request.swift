@@ -58,7 +58,7 @@ extension ChannelPresenter {
         
         if items.isEmpty {
             items.append(.message(parentMessage, []))
-            items.append(.status("Start of thread", nil, false))
+            items.append(.status(Self.threadTitle, nil, false))
         }
         
         if let loadingIndex = items.firstIndexWhereStatusLoading() {
