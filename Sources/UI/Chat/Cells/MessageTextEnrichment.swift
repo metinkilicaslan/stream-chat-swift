@@ -222,7 +222,7 @@ private extension MessageTextEnrichment {
             attributedString.addAttributes([.foregroundColor: style.urlColor], range: detectedURL.range)
             
             if style.isUrlUnderlined {
-                attributedString.addAttributes([.underlineStyle: underlineStyle], range: detectedURL.range)
+                attributedString.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: detectedURL.range)
             }
         }
         
