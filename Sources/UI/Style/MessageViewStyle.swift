@@ -17,7 +17,7 @@ public struct MessageViewStyle: Hashable {
         case left, right
         
         public var uiLayoutDirectionAdjusted: Alignment {
-            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if UIView.appearance().semanticContentAttribute == .forceRightToLeft {
                 if self == .left {
                     return .right
                 }
