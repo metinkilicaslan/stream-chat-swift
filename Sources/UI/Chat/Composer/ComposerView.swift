@@ -271,7 +271,7 @@ public extension ComposerView {
             view.addSubview(alsoSendToChannelButton)
             alsoSendToChannelButton.isHidden = true
             alsoSendToChannelButton.isSelected = true
-            alsoSendToChannelButton.backgroundColor = style.backgroundColor
+            alsoSendToChannelButton.backgroundColor = .clear
             toggleAlsoSendToChannelButton()
             
             alsoSendToChannelButton.snp.makeConstraints { make in
