@@ -57,8 +57,10 @@ public struct MessageViewStyle: Hashable {
     public var replyColor: UIColor
     /// An info text color, e.g. date.
     public var infoColor: UIColor
-    /// Url colors in the message text
+    /// Url colors in the message text.
     public var urlColor: UIColor
+    /// Underline style for url texts.
+    public var urlUnderlineStyle: NSUnderlineStyle?
     /// A border color.
     public var borderColor: UIColor
     /// Show a time for each message with a threshold. Disabled by default.
@@ -139,6 +141,7 @@ public struct MessageViewStyle: Hashable {
     ///   - replyColor: a reply info text color.
     ///   - infoColor: an info text color, e.g. date.
     ///   - urlColor: color for urls in message text.
+    ///   - urlUnderlineStyle: underline style for urls.
     ///   - backgroundColor: a background color of a message.
     ///   - borderColor: a border color.
     ///   - borderWidth: a border width.
@@ -163,6 +166,7 @@ public struct MessageViewStyle: Hashable {
                 replyColor: UIColor = .chatBlue,
                 infoColor: UIColor = .chatGray,
                 urlColor: UIColor = .chatBlue,
+                urlUnderlineStyle: NSUnderlineStyle? = nil,
                 backgroundColor: UIColor = .white,
                 borderColor: UIColor = .chatSuperLightGray,
                 borderWidth: CGFloat = 1,
@@ -191,6 +195,7 @@ public struct MessageViewStyle: Hashable {
         self.replyColor = replyColor
         self.infoColor = infoColor
         self.urlColor = urlColor
+        self.urlUnderlineStyle = urlUnderlineStyle
         self.backgroundColor = backgroundColor
         self.borderColor = borderColor
         self.borderWidth = borderWidth
