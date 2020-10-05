@@ -220,6 +220,10 @@ private extension MessageTextEnrichment {
         
         for detectedURL in detectedURLs {
             attributedString.addAttributes([.foregroundColor: style.urlColor], range: detectedURL.range)
+            
+            if let underlineStyle = style.urlUnderlineStyle {
+                attributedString.addAttributes([.underlineStyle: underlineStyle], range: detectedURL.range)
+            }
         }
         
         self.attributedString = attributedString
