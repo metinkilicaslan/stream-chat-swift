@@ -21,7 +21,11 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
     typealias AttachmentTapAction = (_ attachment: Attachment, _ at: Int, _ message: Message) -> Void
     typealias LongPressAction = (_ cell: MessageTableViewCell, _ message: Message) -> Void
     typealias AttachmentActionTapAction = (_ message: Message, _ button: UIButton) -> Void
-    
+
+    public static var singleReplyTitle: String = "reply"
+    public static var multipleReplyTitle: String = "replies"
+    public static var repliedToThreadTitle: String = " replied to a thread "
+
     // MARK: - Properties
     
     /// A dispose bag for the cell.
@@ -109,7 +113,7 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
     /// A reply in channel button.
     public let replyInChannelButton: UIButton = {
         let button = UIButton(type: .custom)
-        button.setTitle(" replied to a thread ", for: .normal)
+        button.setTitle(MessageTableViewCell.repliedToThreadTitle, for: .normal)
         return button
     }()
     

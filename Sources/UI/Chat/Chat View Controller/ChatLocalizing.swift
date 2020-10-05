@@ -10,6 +10,11 @@ import Foundation
 
 public protocol ChatLocalizing {
 
+    // MARK: - title
+    var threadTitle: String { get }
+    var singleThreadReply: String { get }
+    var multipleThreadReply: String { get }
+    var repliedToThread: String { get }
     // MARK: - Message Actions
     var edit: String { get }
     var reply: String { get }
@@ -32,6 +37,19 @@ public protocol ChatLocalizing {
 
 public extension ChatLocalizing {
 
+    // MARK: - title
+    var threadTitle: String {
+        return "Thread"
+    }
+    var singleThreadReply: String {
+        return "reply"
+    }
+    var multipleThreadReply: String {
+        return "replies"
+    }
+    var repliedToThread: String {
+        return " replied to a thread "
+    }
     // MARK: - Message Actions
     var edit: String {
         return "Edit"
