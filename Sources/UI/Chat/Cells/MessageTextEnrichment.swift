@@ -219,7 +219,11 @@ private extension MessageTextEnrichment {
         let attributedString = self.attributedString ?? defaultAttributedString
         
         for detectedURL in detectedURLs {
-            attributedString.addAttributes([.foregroundColor: style.replyColor], range: detectedURL.range)
+            attributedString.addAttributes([.foregroundColor: style.urlColor], range: detectedURL.range)
+            
+            if style.isUrlUnderlined {
+                attributedString.addAttributes([.underlineStyle: NSUnderlineStyle.single.rawValue], range: detectedURL.range)
+            }
         }
         
         self.attributedString = attributedString

@@ -17,7 +17,7 @@ public struct MessageViewStyle: Hashable {
         case left, right
         
         public var uiLayoutDirectionAdjusted: Alignment {
-            if UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft {
+            if UIView.appearance().semanticContentAttribute == .forceRightToLeft {
                 if self == .left {
                     return .right
                 }
@@ -57,6 +57,10 @@ public struct MessageViewStyle: Hashable {
     public var replyColor: UIColor
     /// An info text color, e.g. date.
     public var infoColor: UIColor
+    /// Url colors in the message text.
+    public var urlColor: UIColor
+    /// Underline style for url texts.
+    public var isUrlUnderlined: Bool
     /// A border color.
     public var borderColor: UIColor
     /// Show a time for each message with a threshold. Disabled by default.
@@ -136,6 +140,8 @@ public struct MessageViewStyle: Hashable {
     ///   - textColor: a message text color.
     ///   - replyColor: a reply info text color.
     ///   - infoColor: an info text color, e.g. date.
+    ///   - urlColor: color for urls in message text.
+    ///   - isUrlUnderlined: underline style for urls.
     ///   - backgroundColor: a background color of a message.
     ///   - borderColor: a border color.
     ///   - borderWidth: a border width.
@@ -159,6 +165,8 @@ public struct MessageViewStyle: Hashable {
                 textColor: UIColor = .black,
                 replyColor: UIColor = .chatBlue,
                 infoColor: UIColor = .chatGray,
+                urlColor: UIColor = .chatBlue,
+                isUrlUnderlined: Bool = false,
                 backgroundColor: UIColor = .white,
                 borderColor: UIColor = .chatSuperLightGray,
                 borderWidth: CGFloat = 1,
@@ -186,6 +194,8 @@ public struct MessageViewStyle: Hashable {
         self.textColor = textColor
         self.replyColor = replyColor
         self.infoColor = infoColor
+        self.urlColor = urlColor
+        self.isUrlUnderlined = isUrlUnderlined
         self.backgroundColor = backgroundColor
         self.borderColor = borderColor
         self.borderWidth = borderWidth

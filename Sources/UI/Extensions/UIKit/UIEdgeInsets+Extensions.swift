@@ -26,13 +26,13 @@ extension UIEdgeInsets: Hashable {
     }
     
     public init(top: CGFloat, leading: CGFloat, bottom: CGFloat, trailing: CGFloat) {
-        let direction = UIApplication.shared.userInterfaceLayoutDirection
+        let direction = UIView.appearance().semanticContentAttribute
 
         switch direction {
-        case .leftToRight:
-            self.init(top: top, left: leading, bottom: bottom, right: trailing)
-        case .rightToLeft:
+        case .forceRightToLeft:
             self.init(top: top, left: trailing, bottom: bottom, right: leading)
+        default:
+            self.init(top: top, left: leading, bottom: bottom, right: trailing)
         }
     }
     

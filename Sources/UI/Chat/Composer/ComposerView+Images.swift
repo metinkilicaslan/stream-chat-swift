@@ -16,7 +16,7 @@ import RxCocoa
 
 class RTLFriendlyFlowLayout: UICollectionViewFlowLayout {
     override var flipsHorizontallyInOppositeLayoutDirection: Bool {
-        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
+        return UIView.appearance().semanticContentAttribute == .forceRightToLeft
     }
 }
 

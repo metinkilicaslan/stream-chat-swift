@@ -88,7 +88,7 @@ extension UIImage {
     }
     
     public var uiLayoutDirectionAdjusted: UIImage? {
-        return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? self.flip(orientation: .upMirrored)?.template : self
+        return UIView.appearance().semanticContentAttribute == .forceRightToLeft ? self.flip(orientation: .upMirrored)?.template : self
     }
 }
 
