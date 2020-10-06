@@ -400,7 +400,7 @@ extension ChatViewController {
         }
         
         if presenter.isThread {
-            title = "Thread"
+            title = localization.threadTitle
             updateTitleReplyCount()
             return
         }
@@ -412,7 +412,7 @@ extension ChatViewController {
     }
     
     private func updateTitleReplyCount() {
-        guard title == "Thread", let parentMessage = presenter?.parentMessage else {
+        guard title == localization.threadTitle, let parentMessage = presenter?.parentMessage else {
             return
         }
         
@@ -421,7 +421,7 @@ extension ChatViewController {
             return
         }
         
-        let title = parentMessage.replyCount == 1 ? "1 reply" : "\(parentMessage.replyCount) replies"
+        let title = parentMessage.replyCount == 1 ? "1 \(localization.singleThreadReply)" : "\(parentMessage.replyCount) \(localization.multipleThreadReply)"
         let button = UIBarButtonItem(title: title, style: .plain, target: nil, action: nil)
         button.tintColor = .chatGray
         button.setTitleTextAttributes([.font: UIFont.chatMedium], for: .normal)
