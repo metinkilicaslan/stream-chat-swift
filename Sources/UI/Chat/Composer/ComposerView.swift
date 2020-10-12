@@ -302,8 +302,6 @@ public extension ComposerView {
         styleState = textView.isFirstResponder ? .active : .normal
         
         if alsoSendToChannelButton.superview != nil {
-            alsoSendToChannelButton.isHidden = true
-            alsoSendToChannelButton.isSelected = true
             toggleAlsoSendToChannelButton()
         }
     }
