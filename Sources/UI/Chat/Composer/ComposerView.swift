@@ -90,6 +90,22 @@ public final class ComposerView: UIView {
         
         return button
     }()
+
+    public var leftItemsStackView = UIStackView()
+
+    private(set) lazy var leftAccessories: [UIView] = {
+        return [attachmentButton]
+    }()
+
+    public func setLeftAccessoryViews(_ views: [UIView]) {
+        leftItemsStackView.arrangedSubviews.forEach { (view) in
+            view.removeFromSuperview()
+        }
+        views.forEach { (view) in
+            leftItemsStackView.addArrangedSubview(view)
+        }
+        leftAccessories = views
+    }
     
     let sendButtonVisibilityBehaviorSubject = BehaviorSubject<(isHidden: Bool, isEnabled: Bool)>(value: (false, false))
     /// An observable sendButton visibility state.
@@ -183,14 +199,17 @@ public extension ComposerView {
         layer.cornerRadius = style.cornerRadius
         layer.borderWidth = styleStateStyle?.borderWidth ?? 0
         layer.borderColor = styleStateStyle?.tintColor.cgColor ?? nil
-        
-        // Add attachment button.
-        addSubview(attachmentButton)
-        
-        attachmentButton.snp.makeConstraints { make in
+
+        // Left accessory
+        addSubview(leftItemsStackView)
+        leftItemsStackView.snp.makeConstraints { make in
             make.height.equalTo(style.height)
             make.leading.equalToSuperview()
             make.bottom.equalToSuperview()
+        }
+
+        for item in leftAccessories {
+            leftItemsStackView.addArrangedSubview(item)
         }
         
         // Add buttons.
@@ -241,18 +260,19 @@ public extension ComposerView {
             } else {
                 make.trailing.equalTo(sendButton.snp.leading)
             }
-            
-            if attachmentButton.isHidden {
-                make.leading.equalToSuperview().offset(textViewPadding)
-            } else {
-                var offset = textView.textContainer.lineFragmentPadding
-                
-                if let borderWidth = style.states[.active]?.borderWidth, borderWidth > 0 {
-                    offset += borderWidth
-                }
-                
-                make.leading.equalTo(attachmentButton.snp.trailing).offset(-offset)
+
+            var offset = textView.textContainer.lineFragmentPadding
+
+            if let borderWidth = style.states[.active]?.borderWidth, borderWidth > 0 {
+                offset += borderWidth
             }
+
+            make.leading.equalTo(leftItemsStackView.snp.trailing).offset(-offset)
+//            if attachmentButton.isHidden {
+//                make.leading.equalToSuperview().offset(textViewPadding)
+//            } else {
+//
+//            }
         }
         
         textView.setContentCompressionResistancePriority(.required, for: .vertical)
