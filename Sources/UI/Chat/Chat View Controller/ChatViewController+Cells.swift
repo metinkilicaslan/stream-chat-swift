@@ -17,7 +17,9 @@ import RxGesture
 
 extension ChatViewController {
     
-    func extensionMessageCell(at indexPath: IndexPath, message: Message, readUsers: [User]) -> UITableViewCell {
+    func extensionMessageCell(at indexPath: IndexPath, message: Message, readUsers: [User],
+                              nameLabelTapHandler: (() -> Void)? = nil,
+                              avatarViewTapHandler: (() -> Void)? = nil) -> UITableViewCell {
         guard let presenter = presenter else {
             return .unused
         }
@@ -161,6 +163,10 @@ extension ChatViewController {
         if presenter.channel.config.reactionsEnabled {
             update(cell: cell, forReactionsIn: message)
         }
+        
+        
+        cell.setNameLabelTapHandler(handler: nameLabelTapHandler)
+        cell.setAvatarViewTapHandler(handler: avatarViewTapHandler)
         
         return cell
     }

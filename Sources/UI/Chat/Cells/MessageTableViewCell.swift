@@ -44,6 +44,9 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
     var reactionsTailImageLeftConstraint: Constraint?
     var reactionsTailImageRightConstraint: Constraint?
     
+    private var avatarViewTapHandler: (() -> Void)?
+    private var nameLabelTapHandler: (() -> Void)?
+    
     let reactionsLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
@@ -338,6 +341,9 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
             make.trailing.equalTo(reactionsContainer).offset(self.style.spacing.vertical)
             make.bottom.equalTo(reactionsTailImage)
         }
+        
+        nameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nameLabelTapped)))
+        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarImageTapped)))
     }
     
     private func setupReplyButton(_ button: UIButton) {
@@ -359,6 +365,24 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         button.tintColor = style.borderWidth > 0
             ? style.borderColor
             : (style.backgroundColor == style.chatBackgroundColor ? .chatGray : style.backgroundColor)
+    }
+    
+    // MARK: Tap Handlers
+    
+    @objc private func avatarImageTapped() {
+        avatarImageTapped()
+    }
+    
+    @objc private func nameLabelTapped() {
+        nameLabelTapped()
+    }
+    
+    public func setAvatarViewTapHandler(handler: (() -> Void)?) {
+        avatarViewTapHandler = handler
+    }
+    
+    public func setNameLabelTapHandler(handler: (() -> Void)?) {
+         nameLabelTapHandler = handler
     }
     
     // MARK: Reset
