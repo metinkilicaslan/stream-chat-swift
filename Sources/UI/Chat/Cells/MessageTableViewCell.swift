@@ -344,6 +344,7 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         
         nameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(nameLabelTapped)))
         avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarImageTapped)))
+        avatarView.isUserInteractionEnabled = true
     }
     
     private func setupReplyButton(_ button: UIButton) {
