@@ -14,7 +14,9 @@ import RxCocoa
 
 /// A composer view.
 public final class ComposerView: UIView {
-    
+
+    public weak var delegate: ComposerTextViewDelegate?
+
     /// A composer view  style.
     public var style: ComposerViewStyle?
     
