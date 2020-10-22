@@ -264,9 +264,9 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     /// - Returns: a message table view cell.
     open func messageCell(at indexPath: IndexPath, message: Message, readUsers: [User]) -> UITableViewCell {
         extensionMessageCell(at: indexPath, message: message, readUsers: readUsers, nameLabelTapHandler: { [weak self] in
-            self?.nameLabelTapped()
+            self?.nameLabelTapped?(message)
         }) { [weak self] in
-            self?.avatarViewTapped()
+            self?.avatarViewTapped?(message)
         }
     }
     
