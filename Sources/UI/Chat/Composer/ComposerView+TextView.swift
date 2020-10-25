@@ -8,6 +8,20 @@
 
 import UIKit
 
+public protocol ComposerTextViewDelegate: NSObjectProtocol {
+    func composerShouldBeginEditing(_ composer: ComposerView) -> Bool
+    func composerDidBeginEditing(_ composer: ComposerView)
+    func composerDidEndEditing(_ composer: ComposerView)
+    func composerDidChange(_ composer: ComposerView)
+}
+
+public extension ComposerTextViewDelegate {
+    func composerShouldBeginEditing(_ composer: ComposerView) -> Bool { return true }
+    func composerDidBeginEditing(_ composer: ComposerView) {}
+    func composerDidEndEditing(_ composer: ComposerView) {}
+    func composerDidChange(_ composer: ComposerView) {}
+}
+
 // MARK: - Text View Height
 
 extension ComposerView {
@@ -115,18 +129,25 @@ extension ComposerView {
 // MARK: - Text View Delegate
 
 extension ComposerView: UITextViewDelegate {
+
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        return delegate?.composerShouldBeginEditing(self) ?? true
+    }
     
     public func textViewDidBeginEditing(_ textView: UITextView) {
+        delegate?.composerDidBeginEditing(self)
         updateTextHeightIfNeeded()
         updateSendButton()
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
+        delegate?.composerDidEndEditing(self)
         updateTextHeightIfNeeded()
         updatePlaceholder()
     }
     
     public func textViewDidChange(_ textView: UITextView) {
+        delegate?.composerDidChange(self)
         updatePlaceholder()
         updateTextHeightIfNeeded()
     }
