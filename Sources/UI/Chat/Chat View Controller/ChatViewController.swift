@@ -67,6 +67,7 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     var keyboardIsVisible = false
     
     open var avatarTapHandler: ((Message) -> Void)?
+    open var nameTapHandler: ((Message) -> Void)?
     
     private(set) lazy var initialSafeAreaBottom: CGFloat = calculatedSafeAreaBottom
     
@@ -264,6 +265,8 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     open func messageCell(at indexPath: IndexPath, message: Message, readUsers: [User]) -> UITableViewCell {
         extensionMessageCell(at: indexPath, message: message, readUsers: readUsers) { [weak self] in
             self?.avatarTapHandler?(message)
+        } nameTapHandler: { [weak self] in
+            self?.nameTapHandler?(message)
         }
     }
     
