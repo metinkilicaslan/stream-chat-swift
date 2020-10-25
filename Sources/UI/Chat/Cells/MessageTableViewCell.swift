@@ -35,6 +35,8 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
     /// Checks if needds setup layout.
     public private(set) var needsToSetup = true
     
+    private var avatarViewTapHandler: (() -> Void)?
+    
     /// An avatar.
     public private(set) lazy var avatarView = AvatarView(style: style.avatarViewStyle)
     
@@ -338,6 +340,17 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
             make.trailing.equalTo(reactionsContainer).offset(self.style.spacing.vertical)
             make.bottom.equalTo(reactionsTailImage)
         }
+        
+        avatarView.isUserInteractionEnabled = true
+        avatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarViewTapped)))
+    }
+    
+    @objc private func avatarViewTapped() {
+        avatarViewTapHandler?()
+    }
+    
+    func setAvatarViewTapHandler(handler: (() -> Void)?) {
+        avatarViewTapHandler = handler
     }
     
     private func setupReplyButton(_ button: UIButton) {
