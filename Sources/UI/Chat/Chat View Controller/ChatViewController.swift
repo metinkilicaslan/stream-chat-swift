@@ -66,6 +66,9 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     public private(set) lazy var composerView = createComposerView()
     var keyboardIsVisible = false
     
+    open var avatarTapHandler: ((Message) -> Void)?
+    open var nameTapHandler: ((Message) -> Void)?
+    
     private(set) lazy var initialSafeAreaBottom: CGFloat = calculatedSafeAreaBottom
     
     /// Calculates the bottom inset for the `ComposerView` when the keyboard will appear.
@@ -260,8 +263,14 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     ///   - readUsers: a list of users who read the message.
     /// - Returns: a message table view cell.
     open func messageCell(at indexPath: IndexPath, message: Message, readUsers: [User]) -> UITableViewCell {
-        extensionMessageCell(at: indexPath, message: message, readUsers: readUsers)
+        extensionMessageCell(at: indexPath, message: message, readUsers: readUsers) { [weak self] in
+            self?.avatarTapHandler?(message)
+        } nameTapHandler: { [weak self] in
+            self?.nameTapHandler?(message)
+        }
     }
+    
+    
     
     /// Updates message cell avatar view.
     /// - Parameters:
