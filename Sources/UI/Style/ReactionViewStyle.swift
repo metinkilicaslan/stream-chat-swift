@@ -29,6 +29,8 @@ public struct ReactionViewStyle: Hashable {
     public let tailMessageCornerRadius: CGFloat
     /// A generated tail image.
     public private(set) var tailImage: UIImage
+    /// Indicates if sdk should present avatars.
+    public let showAvatars: Bool
     
     /// Init a reaction view style.
     ///
@@ -46,7 +48,8 @@ public struct ReactionViewStyle: Hashable {
                 backgroundColor: UIColor = .chatDarkGray,
                 chatBackgroundColor: UIColor = .white,
                 cornerRadius: CGFloat = .reactionsCornerRadius,
-                tailMessageCornerRadius: CGFloat = .messageCornerRadius) {
+                tailMessageCornerRadius: CGFloat = .messageCornerRadius
+                showAvatars: Bool = true) {
         self.alignment = alignment
         self.font = font
         self.textColor = textColor
@@ -55,6 +58,7 @@ public struct ReactionViewStyle: Hashable {
         self.cornerRadius = cornerRadius
         self.tailCornerRadius = cornerRadius * 0.8
         self.tailMessageCornerRadius = tailMessageCornerRadius
+        self.showAvatars = showAvatars
         tailImage = .renderTailImage(smallRadius: tailCornerRadius, bigRadius: tailMessageCornerRadius, alignment: alignment)
     }
 }
