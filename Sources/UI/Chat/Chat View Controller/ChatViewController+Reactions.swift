@@ -66,6 +66,8 @@ extension ChatViewController {
     }
     
     func showReactions(from cell: UITableViewCell, in message: Message, locationInView: CGPoint) {
+        guard delegate?.shouldShowReactions() ?? true else { return }
+
         if reactionsView != nil {
             reactionsView?.removeFromSuperview()
         }

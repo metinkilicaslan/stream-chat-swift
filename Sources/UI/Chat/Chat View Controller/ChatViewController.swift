@@ -13,6 +13,14 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
+public protocol ChatViewControllerDelegate: NSObjectProtocol {
+    func shouldShowReactions() -> Bool
+}
+
+public extension ChatViewControllerDelegate {
+    func shouldShowReactions() -> Bool { return true }
+}
+
 /// A chat view controller of a channel.
 open class ChatViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
     /// Localization support
@@ -26,6 +34,9 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
     public lazy var messageActions = defaultMessageActions
     /// A default message actions. This is useful for subclasses.
     open var defaultMessageActions: MessageAction { .all }
+
+    /// Controller delegate
+    public weak var delegate: ChatViewControllerDelegate?
     
     /// Message actions (see `MessageAction`).
     @available(iOS 13, *)
