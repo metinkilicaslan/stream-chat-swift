@@ -48,7 +48,7 @@ public struct ReactionViewStyle: Hashable {
                 backgroundColor: UIColor = .chatDarkGray,
                 chatBackgroundColor: UIColor = .white,
                 cornerRadius: CGFloat = .reactionsCornerRadius,
-                tailMessageCornerRadius: CGFloat = .messageCornerRadius
+                tailMessageCornerRadius: CGFloat = .messageCornerRadius,
                 showAvatars: Bool = true) {
         self.alignment = alignment
         self.font = font
