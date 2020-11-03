@@ -82,7 +82,7 @@ extension ChatViewController {
         reactionsView.show(emojiReactionTypes: emojiReactionTypes,
                            at: position,
                            for: message,
-                           showAvatars: style.incomingMessage.reactionViewStyle.showAvatars,
+                           showAvatars: style.outgoingMessage.reactionViewStyle.showAvatars,
                            with: preferredEmojiOrder) { [weak self] type, score in
             guard let self = self,
                 let emojiReactionsType = self.emojiReactionTypes[type],
