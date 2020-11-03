@@ -79,10 +79,10 @@ extension ChatViewController {
         
         let convertedOrigin = tableView.convert(cell.frame, to: view).origin
         let position = CGPoint(x: convertedOrigin.x + locationInView.x, y: convertedOrigin.y + locationInView.y)
-        
         reactionsView.show(emojiReactionTypes: emojiReactionTypes,
                            at: position,
                            for: message,
+                           showAvatars: style.outgoingMessage.reactionViewStyle.showAvatars,
                            with: preferredEmojiOrder) { [weak self] type, score in
             guard let self = self,
                 let emojiReactionsType = self.emojiReactionTypes[type],

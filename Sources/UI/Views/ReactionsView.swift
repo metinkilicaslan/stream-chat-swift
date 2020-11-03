@@ -39,11 +39,13 @@ final class ReactionsView: UIView {
     func show(emojiReactionTypes: EmojiReactionTypes,
               at point: CGPoint,
               for message: Message,
+              showAvatars: Bool,
               with preferredEmojiOrder: [String],
               completion: @escaping Completion) {
         addSubview(reactionsView)
         self.emojiReactionTypes = emojiReactionTypes
         reactionScores = message.reactionScores
+        avatarsStackView.isHidden = !showAvatars
         
         let itemsCount = CGFloat(emojiReactionTypes.count)
         
