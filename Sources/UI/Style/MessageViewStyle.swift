@@ -68,6 +68,8 @@ public struct MessageViewStyle: Hashable {
     public var showTimeThreshold: TimeInterval
     /// An additional date style (see `AdditionalDateStyle`).
     public var additionalDateStyle: AdditionalDateStyle
+    /// Should show date or not.
+    public var showDate: Bool
     
     /// A background color of the chat screen.
     public var chatBackgroundColor: UIColor {
@@ -182,6 +184,7 @@ public struct MessageViewStyle: Hashable {
                 reactionViewStyle: ReactionViewStyle = ReactionViewStyle(),
                 showTimeThreshold: TimeInterval = 0,
                 additionalDateStyle: AdditionalDateStyle = .userNameAndDate,
+                showDate: Bool = true,
                 markdownEnabled: Bool = true) {
         self.alignment = alignment
         self.avatarViewStyle = avatarViewStyle
@@ -207,6 +210,7 @@ public struct MessageViewStyle: Hashable {
         self.reactionViewStyle = reactionViewStyle
         self.showTimeThreshold = showTimeThreshold
         self.additionalDateStyle = additionalDateStyle
+        self.showDate = showDate
         self.markdownEnabled = markdownEnabled
         backgroundImages = [:]
         transparentBackgroundImages = [:]
