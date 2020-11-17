@@ -184,7 +184,7 @@ public struct MessageViewStyle: Hashable {
                 reactionViewStyle: ReactionViewStyle = ReactionViewStyle(),
                 showTimeThreshold: TimeInterval = 0,
                 additionalDateStyle: AdditionalDateStyle = .userNameAndDate,
-                showDate: Bool = true
+                showDate: Bool = true,
                 markdownEnabled: Bool = true) {
         self.alignment = alignment
         self.avatarViewStyle = avatarViewStyle
