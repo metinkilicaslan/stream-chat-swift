@@ -201,6 +201,7 @@ open class MessageTableViewCell: UITableViewCell, Reusable {
         dateLabel.font = style.infoFont
         dateLabel.textColor = style.infoColor
         dateLabel.backgroundColor = backgroundColor
+        dateLabel.isHidden = !style.showDate
         
         additionalDateLabel.isHidden = true
         additionalDateLabel.font = style.infoFont
