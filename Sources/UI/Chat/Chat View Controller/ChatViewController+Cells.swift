@@ -218,6 +218,7 @@ extension ChatViewController {
         }
     }
 
+    /// Called when user tap on a link.
     @objc open func handleURLTap(url: URL?) {
         showWebView(url: url, title: nil)
     }
