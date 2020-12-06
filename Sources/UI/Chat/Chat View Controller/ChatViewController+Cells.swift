@@ -207,7 +207,7 @@ extension ChatViewController {
         if let messageTextEnrichment = cell.messageTextEnrichment, !messageTextEnrichment.detectedURLs.isEmpty {
             for detectedURL in messageTextEnrichment.detectedURLs {
                 if tapGesture.didTapAttributedTextInLabel(label: cell.messageLabel, inRange: detectedURL.range) {
-                    showWebView(url: detectedURL.url, title: nil)
+                    handleURLTap(url: detectedURL.url)
                     return
                 }
             }
@@ -216,6 +216,10 @@ extension ChatViewController {
         if let presenter = presenter, presenter.channel.config.reactionsEnabled {
             showReactions(from: cell, in: message, locationInView: tapGesture.location(in: cell))
         }
+    }
+
+    @objc open func handleURLTap(url: URL?) {
+        showWebView(url: url, title: nil)
     }
     
     func showReplies(parentMessage: Message) {
