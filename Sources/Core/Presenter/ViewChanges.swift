@@ -49,7 +49,7 @@ extension ViewChanges: CustomStringConvertible {
             return "<itemsAdded\(items.count): \(rows) -> \(reloadRow ?? -1)>"
         case let .itemsUpdated(rows, messages, items):
             return "<itemsUpdated\(items.count): \(rows)> \(messages.map({ $0.textOrArgs }).joined(separator: ", "))"
-        case let .itemRemoved(row, items):
+        case let .itemRemoved(row, items, removedItem):
             return "<itemRemoved\(items.count): \(row)>"
         case let .itemMoved(fromRow, toRow, items):
             return "<itemMoved\(items.count): \(fromRow) -> \(toRow)>"
