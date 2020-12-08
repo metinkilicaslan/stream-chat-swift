@@ -537,7 +537,7 @@ extension ChatViewController {
                 reactionsView.update(with: message)
             }
             
-        case let .itemRemoved(row, items):
+        case let .itemRemoved(row, items, removedItem):
             self.items = items
             
             UIView.performWithoutAnimation {

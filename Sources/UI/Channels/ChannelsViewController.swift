@@ -275,7 +275,7 @@ extension ChannelsViewController: UITableViewDataSource, UITableViewDelegate {
         switch changes {
         case .itemsAdded(_, _, _, let items),
              .itemMoved(fromRow: _, toRow: _, let items),
-             .itemRemoved(_, let items),
+             .itemRemoved(_, let items, _),
              .reloaded(_, let items):
             self.items = items
             
@@ -316,7 +316,7 @@ extension ChannelsViewController: UITableViewDataSource, UITableViewDelegate {
         case let .itemsUpdated(rows, _, _):
             tableView.reloadRows(at: rows.map({ .row($0) }), with: .none)
             
-        case .itemRemoved(let row, _):
+        case .itemRemoved(let row, _, _):
             tableView.performBatchUpdates({ tableView.deleteRows(at: [.row(row)], with: .none) })
             
         case .reloaded:

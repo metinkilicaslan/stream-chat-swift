@@ -27,7 +27,7 @@ extension ChannelPresenter {
             return .itemsAdded([row], nil, true, items)
         }
         
-        return .itemRemoved(items.count, items)
+        return .itemRemoved(items.count, items, nil)
     }
     
     func mapWithEphemeralMessage(_ changes: ViewChanges) -> ViewChanges {
@@ -54,10 +54,10 @@ extension ChannelPresenter {
             items.append(.message(ephemeralMessage, []))
             return .itemsUpdated(rows, message, items)
             
-        case let .itemRemoved(row, items):
+        case let .itemRemoved(row, items, removedItem):
             var items = items
             items.append(.message(ephemeralMessage, []))
-            return .itemRemoved(row, items)
+            return .itemRemoved(row, items, nil)
             
         case let .itemMoved(fromRow, toRow, items):
             var items = items

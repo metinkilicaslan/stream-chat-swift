@@ -23,7 +23,7 @@ public enum ViewChanges: Equatable, Decodable {
     /// Update items with messages.
     case itemsUpdated(_ rows: [Int], [Message], _ items: [PresenterItem])
     /// Remove item at row.
-    case itemRemoved(_ row: Int, _ items: [PresenterItem])
+    case itemRemoved(_ row: Int, _ items: [PresenterItem], _ removedItem: PresenterItem?)
     /// Move item from row to another.
     case itemMoved(fromRow: Int, toRow: Int, _ items: [PresenterItem])
     /// Update fiiter.

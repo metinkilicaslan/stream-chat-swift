@@ -37,7 +37,7 @@ extension ChannelPresenter {
         self.items = items
         
         if response.messages.isEmpty {
-            return isLoadingIndex == -1 ? .none : .itemRemoved(isLoadingIndex, items)
+            return isLoadingIndex == -1 ? .none : .itemRemoved(isLoadingIndex, items, nil)
         }
         
         if items.isEmpty {

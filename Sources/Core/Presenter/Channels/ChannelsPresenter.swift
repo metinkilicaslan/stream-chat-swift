@@ -169,14 +169,14 @@ extension ChannelsPresenter {
             
         case .channelDeleted:
             if let index = items.firstIndex(where: cid) {
-                items.remove(at: index)
-                return Observable.just(.itemRemoved(index, items))
+                let removedItem = items.remove(at: index)
+                return Observable.just(.itemRemoved(index, items, removedItem))
             }
             
         case .channelHidden:
             if let index = items.firstIndex(where: cid) {
-                items.remove(at: index)
-                return Observable.just(.itemRemoved(index, items))
+                let removedItem = items.remove(at: index)
+                return Observable.just(.itemRemoved(index, items, removedItem))
             }
             
         case .messageNew, .messageUpdated:

@@ -115,6 +115,6 @@ private extension Reactive where Base == ChannelsPresenter {
         }
         
         base.items.remove(at: index)
-        base.actions.onNext(.itemRemoved(index, base.items))
+        base.actions.onNext(.itemRemoved(index, base.items, nil))
     }
 }
