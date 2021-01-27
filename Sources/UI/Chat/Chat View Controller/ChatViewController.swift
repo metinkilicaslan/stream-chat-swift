@@ -304,7 +304,7 @@ open class ChatViewController: ViewController, UITableViewDataSource, UITableVie
                               in cell: MessageTableViewCell,
                               message: Message) {
         guard attachment.isImage else {
-            showWebView(url: attachment.url, title: attachment.title)
+            handleURLTap(url: attachment.url, title: attachment.title)
             return
         }
         
